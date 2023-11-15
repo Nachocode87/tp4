@@ -1,23 +1,13 @@
-let auto = {
-    color: 'azul',
-    marca: 'chevrolet',
-    modelo: 'cruze',
-    estado: false,
-    encender: function() {
-        if (this.estado) {
-            console.log('el auto ya estaba encendido');
-        } else {
-            this.estado = true;
-            console.log('auto encendido');
-        }
+const cuenta = {
+    titular: 'alex',
+    saldo: 0,
+    ingresar: function(params) {
+        this.saldo += params;
     },
-    apagar: function() {
-        if (this.estado) {
-            this.estado = false;
-            console.log('el auto se apago');
-        } else {
-            console.log('el auto ya estaba apagado');
-        }
+    extraer: function(params) {
+        this.saldo -= params;
     },
-    
-};
+    informar: function() {
+        console.log(this.titular+' su saldo es '+this.saldo)
+    }
+}
