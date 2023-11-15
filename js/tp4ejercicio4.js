@@ -11,7 +11,7 @@ class Producto {
         return this.#codigo;
     }
     set codigo (codigo) {
-        this.#codigo = alto;
+        this.#codigo = codigo;
     }
     get precio () {
         return this.#precio;
@@ -26,12 +26,8 @@ class Producto {
         this.#nombre = nombre;
     }
 
-    perimetro() {
-        return this.alto*2 + this.ancho*2;
-    }
-    area() {
-        return this.alto*this.ancho;
-    }
+    
+    
     imprimeDatos() {
         console.log(`el nombre del producto es ${this.nombre}, codigo ${this.codigo}, precio ${this.precio}`)
     }
@@ -45,5 +41,5 @@ let productosEnero = [pera1,manzana1,banana1];
 
 for (let i = 0; i < productosEnero.length; i++) {
    
-    console.log(`productos de enero : ${productosEnero[i].imprimeDatos()}`)
+    console.log(productosEnero[i].imprimeDatos())
 }
