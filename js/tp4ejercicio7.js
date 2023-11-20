@@ -44,13 +44,23 @@ class Contacto {
         nombreLista.push({telefono: this.telefono, nombre: this.nombre})
         console.log(nombreLista)
     }
-    eliminarContacto() {
-        this.nombreLista.push({telefono: this.telefono, nombre: this.nombre})
-        console.log(this.nombreLista)
+    eliminarContacto(nombre) {
+            // falta
+        for (let i = 0; i < nombreLista.length; i++) {
+            if (nombreLista[i].nombre === nombre) {
+                nombreLista.slice(nombreLista[i],1);
+                console.log('el contacto se elimino');     
+
+                break;
+            } else {
+                console.log('el contacto no existe');     
+            }
+        }
+        
+        
     }
     existeContacto(nombre) {
         for (let i = 0; i < nombreLista.length; i++) {
-            console.log(nombreLista[i])
             if (nombreLista[i].nombre === nombre) {
                 console.log('el contacto existe');
                 break;
@@ -88,6 +98,7 @@ jose.existeContacto('joseI');
 jose.agendaLlena();
 jose.huecoLibre();
 jose.listarContactos();
-
+jose.eliminarContacto('nacho');
+jose.listarContactos();
 
 
