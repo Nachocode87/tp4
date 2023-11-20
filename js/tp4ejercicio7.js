@@ -1,113 +1,93 @@
-class Persona {
-    #edad;
-    #dni;
+// Nos piden realizar una agenda telefónica de contactos.
+
+// Un contacto está definido por un nombre y un teléfono. Se considera que un contacto es igual a otro cuando sus nombres son iguales.
+
+// Una agenda de contactos está formada por un conjunto de contactos. Se podrá crear de dos formas, indicando nosotros el tamaño o con un tamaño por defecto (10).
+
+// Los métodos de la agenda serán los siguientes:
+
+// aniadirContacto(Contacto): Añade un contacto a la agenda, sino la agenda no puede almacenar más contactos indicar por pantalla.
+// existeContacto(Contacto): indica si el contacto pasado existe o no.
+// listarContactos(): Lista toda la agenda
+// buscarContacto(nombre): busca un contacto por su nombre y muestra su teléfono.
+// eliminarContacto(Contacto c): elimina el contacto de la agenda, indica si se ha eliminado o no por pantalla
+// agendaLlena(): indica si la agenda está llena.
+// huecosLibres(): indica cuántos contactos más podemos ingresar.
+
+// Crea un menú con opciones que serán seleccionadas por el usuario usando un prompt, las salidas de las operaciones seleccionadas por el usuario se pueden mostrar en pantalla y  por consola.
+
+nombreLista = [];
+
+class Contacto {
+    #telefono;
     #nombre;
-    #sexo;
-    #peso;
-    #altura;
-    #anio;
-    #gen;
-    constructor(edadP,dniP,nombreP,sexoP,pesoP,alturaP,anioP) {
-        this.#edad = edadP;
-        this.#dni = dniP;
+    constructor(telefonoP,nombreP) {
+        this.#telefono = telefonoP;
         this.#nombre = nombreP;
-        this.#sexo = sexoP;
-        this.#peso = pesoP;
-        this.#altura = alturaP;
-        this.#anio = anioP;
     }
-    get edad () {
-        return this.#edad;
+    
+    get telefono () {
+        return this.#telefono;
     }
-    set edad (edad) {
-        this.#edad = edad;
+    set telefono (telefono) {
+        this.#telefono = telefono;
     }
-
-    get dni () {
-        return this.#dni;
-    }
-    set dni (dni) {
-        this.#dni = dni;
-    }
-
     get nombre () {
         return this.#nombre;
     }
     set nombre (nombre) {
         this.#nombre = nombre;
     }
+   
 
-    get sexo () {
-        return this.#sexo;
+    addContacto() {
+        nombreLista.push({telefono: this.telefono, nombre: this.nombre})
+        console.log(nombreLista)
     }
-    set sexo (sexo) {
-        this.#sexo = sexo;
+    eliminarContacto() {
+        this.nombreLista.push({telefono: this.telefono, nombre: this.nombre})
+        console.log(this.nombreLista)
     }
-    
-    get peso () {
-        return this.#peso;
+    existeContacto(nombre) {
+        for (let i = 0; i < nombreLista.length; i++) {
+            console.log(nombreLista[i])
+            if (nombreLista[i].nombre === nombre) {
+                console.log('el contacto existe');
+                break;
+            } else {
+                console.log('el contacto no existe');     
+            }
+        }
     }
-    set peso (peso) {
-        this.#peso = peso;
+    agendaLlena() {
+        if(nombreLista.length === 10){
+            console.log('su agenda esta llena');
+        } else{
+            console.log('su agenda tiene lugares disponible')
+        }
     }
-    
-    get altura () {
-        return this.#altura;
+    huecoLibre() {
+        console.log(`su agenda tiene ${10-nombreLista.length} lugares`)
     }
-    set altura (altura) {
-        this.#altura = altura;
-    }
-    
-    get anio () {
-        return this.#anio;
-    }
-    set anio (anio) {
-        this.#anio = anio;
-    }
-    
-    generacion() {
-        if (this.anio < 1949) {
-            console.log('silent generation, austeridad');
-
-        } else if (this.anio < 1969) {
-            console.log('baby boom, ambicion');         
-        
-        } else if (this.anio < 1981) {
-            console.log('generacion X, obsecion por el exito');         
-        
-        } else if (this.anio < 1981) {
-            console.log('generacion Y, frustacion');         
-        
-        } else {
-            console.log('generacion Z, irreverencia');         
+    listarContactos() {
+        for (let i = 0; i < nombreLista.length; i++) {
+            
+            console.log(nombreLista[i].nombre+'---'+nombreLista[i].telefono);
         }
     }
     
-    esMayorEdad() {
-        if (this.edad < 18) {
-            console.log('es menor de edad');
-
-        } else {
-            console.log('es mayor de edad');
-        }
-    }
-
-    dniRandom() {
-        this.dni = Math.floor(Math.random()*(99999999 - 10000000)+1);
-    }
-
-    mostrarDatos() {
-        console.log(edadDdni,nombre,sexo,peso,altura,anio);
-    }
 }
 
-// const pera1 = new Producto(112,'$2','pera');
-// const manzana1 = new Producto(114,'$3','manzana');
-// const banana1 = new Producto(116,'$2.5','banana');
+let jose = new Contacto(123,'joseI');
+jose.addContacto();
+let nacho = new Contacto(4123,'nacho');
+nacho.addContacto();
 
-// let productosEnero = [pera1,manzana1,banana1];
+console.log(jose);
+jose.existeContacto('joseI');
+jose.agendaLlena();
+jose.huecoLibre();
+jose.listarContactos();
 
-// for (let i = 0; i < productosEnero.length; i++) {
-   
-//     console.log(productosEnero[i].imprimeDatos())
-// }
+
+
