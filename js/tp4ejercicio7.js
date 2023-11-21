@@ -50,7 +50,7 @@ class Agenda extends Contacto{
 
     addContacto(obj) {
      
-        this.nombreLista.push({obj})
+        this.nombreLista.push(obj)
              
         console.log(this.nombreLista)
            
@@ -73,12 +73,9 @@ class Agenda extends Contacto{
     }
     existeContacto(nombre) {
         for (let i = 0; i < this.nombreLista.length; i++) {
-            if (this.nombreLista[i] === nombre) {
-                console.log('el contacto existe');
-                break;
-            } else {
-                console.log('el contacto no existe');     
-            }
+            if (this.nombreLista[i].nombre === nombre) {
+                console.log(`el contacto ${nombre} existe`);
+            } 
         }
     }
     agendaLlena() {
@@ -99,7 +96,7 @@ class Agenda extends Contacto{
     }
 }
 
-
+// $ git commit -m 'se logro agregar al array, contar, listar, lugares, buscar
 
 
 
@@ -109,12 +106,21 @@ let storage = new Agenda();
 storage.addContacto(jose)
 let nacho = new Contacto(465,'ignacio');
 storage.addContacto(nacho)
+storage.addContacto(nacho)
+storage.addContacto(nacho)
+storage.addContacto(nacho)
+storage.addContacto(nacho)
+storage.addContacto(nacho)
+storage.addContacto(nacho)
+storage.addContacto(nacho)
+storage.addContacto(nacho)
 
 
 storage.agendaLlena()
 storage.existeContacto('ignacio')
 storage.existeContacto('igna')
 storage.listarContactos()
-
-
+storage.huecoLibre()
+storage.eliminarContacto('pepe')
+storage.listarContactos()
 
