@@ -7,7 +7,6 @@ class Persona2 {
         this.#nombre = nombreP;
         this.#profesion = profesionP;
     }
-    agendaLista = [];
 
     get edad () {
         return this.#edad;

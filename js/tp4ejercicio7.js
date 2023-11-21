@@ -15,13 +15,11 @@
 // huecosLibres(): indica cuántos contactos más podemos ingresar.
 
 // Crea un menú con opciones que serán seleccionadas por el usuario usando un prompt, las salidas de las operaciones seleccionadas por el usuario se pueden mostrar en pantalla y  por consola.
-
-nombreLista = [];
-
-class Contacto {
+class Contacto{
     #telefono;
     #nombre;
     constructor(telefonoP,nombreP) {
+        
         this.#telefono = telefonoP;
         this.#nombre = nombreP;
     }
@@ -40,17 +38,31 @@ class Contacto {
     }
    
 
-    addContacto() {
-        nombreLista.push({telefono: this.telefono, nombre: this.nombre})
-        console.log(nombreLista)
+    
+}
+
+
+class Agenda extends Contacto{
+    nombreLista = [];
+    constructor() {
+        super()
     }
+
+    addContacto(obj) {
+     
+        this.nombreLista.push({obj})
+             
+        console.log(this.nombreLista)
+           
+    }
+    
     eliminarContacto(nombre) {
             // falta
-        for (let i = 0; i < nombreLista.length; i++) {
-            if (nombreLista[i].nombre === nombre) {
-                nombreLista.slice(nombreLista[i],1);
+        for (let i = 0; i < this.nombreLista.length; i++) {
+            if (this.nombreLista[i].nombre === nombre) {
+                this.nombreLista.slice(this.nombreLista[i],1);
                 console.log('el contacto se elimino');     
-
+    
                 break;
             } else {
                 console.log('el contacto no existe');     
@@ -60,8 +72,8 @@ class Contacto {
         
     }
     existeContacto(nombre) {
-        for (let i = 0; i < nombreLista.length; i++) {
-            if (nombreLista[i].nombre === nombre) {
+        for (let i = 0; i < this.nombreLista.length; i++) {
+            if (this.nombreLista[i] === nombre) {
                 console.log('el contacto existe');
                 break;
             } else {
@@ -70,35 +82,39 @@ class Contacto {
         }
     }
     agendaLlena() {
-        if(nombreLista.length === 10){
+        if(this.nombreLista.length === 10){
             console.log('su agenda esta llena');
         } else{
             console.log('su agenda tiene lugares disponible')
         }
     }
     huecoLibre() {
-        console.log(`su agenda tiene ${10-nombreLista.length} lugares`)
+        console.log(`su agenda tiene ${this.nombreLista.length} lugares`)
     }
     listarContactos() {
-        for (let i = 0; i < nombreLista.length; i++) {
+        for (let i = 0; i < this.nombreLista.length; i++) {
             
-            console.log(nombreLista[i].nombre+'---'+nombreLista[i].telefono);
+            console.log(this.nombreLista[i]);
         }
     }
-    
 }
 
-let jose = new Contacto(123,'joseI');
-jose.addContacto();
-let nacho = new Contacto(4123,'nacho');
-nacho.addContacto();
 
-console.log(jose);
-jose.existeContacto('joseI');
-jose.agendaLlena();
-jose.huecoLibre();
-jose.listarContactos();
-jose.eliminarContacto('nacho');
-jose.listarContactos();
+
+
+
+
+let jose = new Contacto(123,'pepe');
+let storage = new Agenda();
+storage.addContacto(jose)
+let nacho = new Contacto(465,'ignacio');
+storage.addContacto(nacho)
+
+
+storage.agendaLlena()
+storage.existeContacto('ignacio')
+storage.existeContacto('igna')
+storage.listarContactos()
+
 
 
