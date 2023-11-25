@@ -28,3 +28,5 @@ class Rectangulo {
         console.log(`el alto es ${this.alto} y el ancho ${this.ancho} del rectangulo, su perimetro es ${this.perimetro()} y su area ${this.area()}`)
     }
 }
+
+

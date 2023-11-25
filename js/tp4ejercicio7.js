@@ -35,10 +35,7 @@ class Contacto{
     }
     set nombre (nombre) {
         this.#nombre = nombre;
-    }
-   
-
-    
+    }    
 }
 
 
@@ -47,31 +44,32 @@ class Agenda extends Contacto{
     constructor() {
         super()
     }
-
+    
     addContacto(obj) {
-     
-        this.nombreLista.push(obj)
-             
-        console.log(this.nombreLista)
-           
-    }
-    
-    eliminarContacto(nombre) {
-            // falta
-        for (let i = 0; i < this.nombreLista.length; i++) {
-            if (this.nombreLista[i].nombre === nombre) {
-                this.nombreLista.slice(this.nombreLista[i],1);
-                console.log('el contacto se elimino');     
-    
-                break;
-            } else {
-                console.log('el contacto no existe');     
-            }
+        if (this.nombreLista.length < 10) {
+            this.nombreLista.push(obj)    
+            console.log(this.nombreLista)
+        } else {
+            console.log('su agenda esta llena, elimine elementos')
+
         }
         
+    }
+  
+    eliminarContacto(nombre) {
+        for (let i = 0; i < this.nombreLista.length; i++) {
+            
+          
+            if (this.nombreLista[i].nombre == nombre) {   
+                console.log(`el contacto ${this.nombreLista[i].nombre} se elimino`);
+                this.nombreLista.splice(i,1)
+                break;
+            } 
+
+        }
         
     }
-    existeContacto(nombre) {
+    buscarContacto(nombre) {
         for (let i = 0; i < this.nombreLista.length; i++) {
             if (this.nombreLista[i].nombre === nombre) {
                 console.log(`el contacto ${nombre} existe`);
@@ -85,9 +83,11 @@ class Agenda extends Contacto{
             console.log('su agenda tiene lugares disponible')
         }
     }
+    
     huecoLibre() {
         console.log(`su agenda tiene ${this.nombreLista.length} lugares`)
     }
+    
     listarContactos() {
         for (let i = 0; i < this.nombreLista.length; i++) {
             
@@ -101,26 +101,16 @@ class Agenda extends Contacto{
 
 
 
-let jose = new Contacto(123,'pepe');
 let storage = new Agenda();
+let jose = new Contacto(123,'pepe');
 storage.addContacto(jose)
 let nacho = new Contacto(465,'ignacio');
-storage.addContacto(nacho)
-storage.addContacto(nacho)
-storage.addContacto(nacho)
-storage.addContacto(nacho)
-storage.addContacto(nacho)
-storage.addContacto(nacho)
-storage.addContacto(nacho)
-storage.addContacto(nacho)
 storage.addContacto(nacho)
 
 
 storage.agendaLlena()
-storage.existeContacto('ignacio')
-storage.existeContacto('igna')
-storage.listarContactos()
+storage.buscarContacto('ignacio')
+storage.buscarContacto('igna')
 storage.huecoLibre()
-storage.eliminarContacto('pepe')
+storage.eliminarContacto('ignacio');
 storage.listarContactos()
-
